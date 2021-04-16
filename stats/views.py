@@ -122,7 +122,7 @@ class StatisticsView(GenericAPIView):
         current_user = request.user
         user_aggregate = (
             get_user_model()
-            .objects.get(id=current_user)
+            .objects.get(id=current_user.id)
             .sales.aggregate(
                 total_revenue=Sum("revenue"),
                 total_sales=Count("id"),
@@ -139,7 +139,7 @@ class StatisticsView(GenericAPIView):
 
         highest_revenue_sale_for_current_user = (
             get_user_model()
-            .objects.get(id=current_user)
+            .objects.get(id=current_user.id)
             .sales.filter(revenue=user_aggregate["highest_revenue"])
             .first()
         )
