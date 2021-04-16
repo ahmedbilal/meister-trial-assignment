@@ -9,12 +9,17 @@ class LoginSerializer(serializers.Serializer):
 
     def validate(self, data):
         email, password = data["email"], data["password"]
-        user = authenticate(self.context.get('request'), username=email, password=password)
+        user = authenticate(
+            self.context.get("request"), username=email, password=password
+        )
         print(user)
         if not user:
-            raise serializers.ValidationError("Unable to log in with provided credentials.")
-        data['user'] = user
+            raise serializers.ValidationError(
+                "Unable to log in with provided credentials."
+            )
+        data["user"] = user
         return data
+
 
 class CitySerializer(serializers.ModelSerializer):
     class Meta:

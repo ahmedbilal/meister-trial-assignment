@@ -22,12 +22,12 @@ from stats import views
 from rest_framework.authtoken.views import ObtainAuthToken
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/v1/login', views.LoginView.as_view(), name="login"),
-    path('api/v1/logout', views.LogoutView.as_view(), name="logout"),
-    path('api/v1/users/<int:pk>', views.UserView.as_view(), name="user_info"),
-    path('api/v1/country_data', views.CountryList.as_view(), name="country_list"),
-    path('api/v1/sales', views.SaleView.as_view(), name="sales"),
-    path('api/v1/sale_statistics', views.StatisticsView.as_view(), name="statistics"),
+    path("admin/", admin.site.urls),
+    path("api/v1/login", views.LoginView.as_view(), name="login"),
+    path("api/v1/logout", views.LogoutView.as_view(), name="logout"),
+    path("api/v1/users/<int:pk>", views.UserView.as_view(), name="user_info"),
+    path("api/v1/country_data", views.CountryList.as_view(), name="country_list"),
+    path("api/v1/sales", views.SaleView.as_view(), name="sales"),
+    path("api/v1/sale_statistics", views.StatisticsView.as_view(), name="statistics"),
     re_path(r"^.*$", views.react, name="home"),
 ]
